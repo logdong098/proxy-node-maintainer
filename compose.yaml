@@ -1,0 +1,23 @@
+name: backup-node-maintainer
+
+services:
+  subs-check:
+    image: ${SUBS_CHECK_IMAGE:-ghcr.io/beck-8/subs-check:latest}
+    container_name: backup-node-maintainer
+    init: true
+    restart: unless-stopped
+    mem_limit: 768m
+    ports:
+      - "127.0.0.1:8199:8199"
+      - "127.0.0.1:8299:8299"
+    environment:
+      TZ: ${TZ:-Asia/Shanghai}
+      API_KEY: ${API_KEY:?Run python3 scripts/bootstrap.py first}
+    volumes:
+      - ./config:/app/config
+      - ./output:/app/output
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"

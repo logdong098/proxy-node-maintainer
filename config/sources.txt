@@ -1,0 +1,9 @@
+# 格式：订阅 URL | 来源标签
+# 标签可省略；空行和以 # 开头的行会被忽略。
+# 这些是公开 GitHub 数据源，只适合做临时备份。请勿用免费节点登录敏感账号。
+
+https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/snippets/nodes.meta.yml | NoMoreWalls
+https://raw.githubusercontent.com/Pawdroid/Free-servers/refs/heads/main/sub | Pawdroid
+https://raw.githubusercontent.com/SoliSpirit/v2ray-configs/main/all_configs.txt | SoliSpirit
+https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.yml | AutoMerge
+https://raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/clashmeta.txt | Barabama

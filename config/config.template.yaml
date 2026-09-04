@@ -1,0 +1,66 @@
+# 由 scripts/generate_config.py 生成 config/config.yaml。
+# 日常只编辑 config/sources.txt；不要直接修改生成文件。
+
+print-progress: true
+concurrent: 50
+media-concurrent: 8
+speed-concurrent: 4
+shuffle-test-order: true
+
+# 每两小时更新。使用 interval 而不是 cron，可确保首次启动立即检测。
+check-interval: 120
+
+# 控制免费节点池规模，避免测速时间和流量无限增长。
+success-limit: 120
+timeout: 6000
+alive-test-url: https://www.gstatic.com/generate_204
+
+# 每个候选最多下载 2 MB、最多测试 5 秒；这里只用于淘汰明显不可用节点。
+speed-test-url: https://speed.cloudflare.com/__down?bytes=2097152
+min-speed: 128
+download-timeout: 5
+download-mb: 2
+total-speed-limit: 20
+
+listen-port: ":8199"
+rename-node: true
+node-prefix: "BACKUP | "
+node-type:
+filter:
+
+# 默认不运行流媒体/IP 风险检测，减少对第三方检测接口的调用。
+media-check: false
+media-check-timeout: 5
+platforms:
+  - openai
+
+# 复用最近 7 天曾经成功的节点，并在每轮重新测活后才保留。
+keep-days: 7
+output-dir: "/app/output"
+
+enable-web-ui: true
+api-key: ""
+callback-script: "/app/config/archive_output.sh"
+
+sub-store-port: ":8299"
+sub-store-path: ""
+mihomo-overwrite-url: "http://127.0.0.1:8199/sub/ACL4SSR_Online_Full.yaml"
+
+save-method: local
+sub-urls-retry: 2
+sub-urls-concurrent: 10
+sub-urls-get-ua: "clash.meta (personal backup-node-maintainer)"
+github-proxy: ""
+proxy: ""
+success-rate: 0
+ipv6: false
+
+dns:
+  enable: false
+  proxy-server-nameserver:
+  nameserver:
+  default-nameserver:
+
+sub-urls-remote:
+sub-urls:
+# __GENERATED_SUB_URLS__
